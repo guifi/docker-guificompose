@@ -80,3 +80,21 @@ In development
 
 ### Using XDebug PHP debugger
 Default configuration tries to connect using DBGp protocol to host 9000 port. To start a debugging session you need to add http://localhost:8080/?XDEBUG_SESSION_START=1
+
+## fiberfy-server
+There are some compositions to run fiberfy-server API with drupal 6 guifi.net webpage. This is necessary because both applications share the same database (guifidev). If you want to run fiberfy-server you need to navigate inside drupal6+fiberfy-sails (folder without -sails is deprecated and soon will be removed from this repository). Then it will run with this simple command:
+
+```
+docker-compose up
+```
+
+After that you will have 4 containers running (the only difference with drupal6 standalone composition is the presence of fiberfy-server container).
+
+### Update 23-04-2018
+You need to change drupal-guifi module branch to use `drupal6-fiberfy` branch:
+```
+cd ./guifi-web/sites/all/modules/guifi
+git checkout drupal6-fiberfy
+```
+
+This branch includes some new fields and indexes necessaries to run fiberfy-server with guifi.net database. After that you have to update guifi.net development site (by default http://localhost:8080/update.php) selecting last update in guifi module. Then it should work.
