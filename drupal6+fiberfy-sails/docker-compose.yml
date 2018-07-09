@@ -9,6 +9,7 @@ services:
       GUIFI_USER_DB: guifi
       GUIFI_USER_DB_PWD: guifi
       XDEBUG_PORT: 9000
+      GUIFI_URL: http://84.88.85.13/
     links:
       - database
     volumes:
@@ -40,12 +41,13 @@ services:
     environment:
       FIBERFY_UNIX_USER: fiberfy
       FIBERFY_GIT_REPO: https://github.com/guifi/fiberfy-server.git
-      FIBERFY_GIT_BRANCH: sails
-    command: gosu fiberfy sails lift
+      FIBERFY_GIT_BRANCH: sails-newinfra
+    command: gosu fiberfy node --inspect=0.0.0.0:9229 app.js
     links:
       - database
     ports:
       - 1337:1337
+      - 9229:9229
     volumes:
       - ./fiberfy-server:/usr/share/node/fiberfy
 
