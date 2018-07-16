@@ -9,6 +9,7 @@ services:
       GUIFI_USER_DB: guifi
       GUIFI_USER_DB_PWD: guifi
       XDEBUG_PORT: 9000
+      GUIFI_URL: http://dev.guifi.net/static/
     links:
       - database
       - gmaps
@@ -40,6 +41,8 @@ services:
     image: "guifi/guifimaps"
     environment:
       GUIFI_WEB: "guifi.net"
+    ports:
+      - 9000:80
 
 volumes:
   guifi-web:

@@ -12,6 +12,7 @@ services:
       GUIFI_URL: http://dev.guifi.net/static/
     links:
       - database
+      - gmaps
     volumes:
       - ./guifi-web:/usr/share/drupal/guifi-web/
     ports:
@@ -35,6 +36,28 @@ services:
       - database:db
     ports:
       - 8000:80
+
+  fiberfy:
+    image: "guifi/fiberfy:sails"
+    environment:
+      FIBERFY_UNIX_USER: fiberfy
+      FIBERFY_GIT_REPO: https://github.com/guifi/fiberfy-server.git
+      FIBERFY_GIT_BRANCH: sails-newinfra
+    command: gosu fiberfy node --inspect=0.0.0.0:9229 app.js
+    links:
+      - database
+    ports:
+      - 1337:1337
+      - 9229:9229
+    volumes:
+      - ./fiberfy-server:/usr/share/node/fiberfy
+
+  gmaps:
+    image: "guifi/guifimaps"
+    environment:
+      GUIFI_WEB: "guifi.net"
+    ports:
+      - 9000:80
 
 volumes:
   guifi-web:
