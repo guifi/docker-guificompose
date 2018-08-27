@@ -41,7 +41,6 @@ services:
     environment:
       FIBERFY_UNIX_USER: fiberfy
       FIBERFY_GIT_REPO: https://github.com/guifi/fiberfy-server.git
-      FIBERFY_GIT_BRANCH: sails
     command: gosu fiberfy node --inspect=0.0.0.0:9229 app.js
     links:
       - database
