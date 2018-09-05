@@ -57,6 +57,8 @@ services:
       GUIFI_WEB: "guifi.net"
     ports:
       - 9000:80
+    volumes:
+      - ./guifimaps:/home/guifi/
 
 volumes:
   guifi-web:
