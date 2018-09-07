@@ -55,6 +55,13 @@ services:
     image: "guifi/guifimaps"
     environment:
       GUIFI_WEB: "guifi.net"
+      FIBERFY_API: "fiberfy:1337"
+      FIBERFY_LOGIN: "/auth/loginLDAP"
+      FIBERFY_EXPORT: "/api/v1/export/all"
+      LDAP_USERNAME: "${LDAP_USERNAME}"
+      LDAP_PASSWORD: "${LDAP_PASSWORD}"
+    links:
+      - fiberfy
     ports:
       - 9000:80
     volumes:

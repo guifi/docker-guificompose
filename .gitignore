@@ -15,3 +15,6 @@
 
 # guifimaps
 **/guifimaps
+
+# .env files
+**/.env
