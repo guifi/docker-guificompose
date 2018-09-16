@@ -63,7 +63,7 @@ services:
     links:
       - fiberfy
     ports:
-      - 9000:80
+      - 9090:80
     volumes:
       - ./guifimaps:/home/guifi/
 
