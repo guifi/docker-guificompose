@@ -10,19 +10,11 @@ services:
     volumes:
       - ./database:/var/lib/mysql
 
-  myadmin:
-    image: "phpmyadmin/phpmyadmin"
-    links:
-      - database:db
-    ports:
-      - 8000:80
-
   fiberfy:
     image: "guifi/fiberfy:sails"
     environment:
       FIBERFY_UNIX_USER: fiberfy
       FIBERFY_GIT_REPO: https://github.com/guifi/fiberfy-server.git
-    command: /bin/bash
     links:
       - database
     ports:
