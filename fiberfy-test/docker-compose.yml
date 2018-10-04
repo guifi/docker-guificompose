@@ -1,0 +1,31 @@
+version: "2"
+services:
+  database:
+    image: "mariadb"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: guifitest
+      MYSQL_USER: guifi
+      MYSQL_PASSWORD: guifi
+    volumes:
+      - ./database:/var/lib/mysql
+
+  myadmin:
+    image: "phpmyadmin/phpmyadmin"
+    links:
+      - database:db
+    ports:
+      - 8000:80
+
+  fiberfy:
+    image: "guifi/fiberfy:sails"
+    environment:
+      FIBERFY_UNIX_USER: fiberfy
+      FIBERFY_GIT_REPO: https://github.com/guifi/fiberfy-server.git
+    command: /bin/bash
+    links:
+      - database
+    ports:
+      - 1337:1337
+    volumes:
+      - .:/usr/share/node/fiberfy
