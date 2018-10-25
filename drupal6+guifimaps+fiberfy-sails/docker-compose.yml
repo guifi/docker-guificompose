@@ -58,8 +58,8 @@ services:
       FIBERFY_API: "fiberfy:1337"
       FIBERFY_LOGIN: "/auth/loginLDAP"
       FIBERFY_EXPORT: "/api/v1/export/all"
-      LDAP_USERNAME: "${LDAP_USERNAME}"
-      LDAP_PASSWORD: "${LDAP_PASSWORD}"
+      FIBERFY_USERNAME: "${FIBERFY_USERNAME}"
+      FIBERFY_PASSWORD: "${FIBERFY_PASSWORD}"
     links:
       - fiberfy
     ports:
