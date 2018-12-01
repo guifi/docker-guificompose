@@ -54,8 +54,8 @@ services:
   gmaps:
     image: "guifi/guifimaps"
     environment:
-      GUIFI_WEB: "guifi.net"
-      FIBERFY_API: "fiberfy:1337"
+      GUIFI_WEB: "http://guifi.net"
+      FIBERFY_API: "http://fiberfy:1337"
       FIBERFY_LOGIN: "/auth/loginLDAP"
       FIBERFY_EXPORT: "/api/v1/export/all"
       FIBERFY_USERNAME: "${FIBERFY_USERNAME}"
